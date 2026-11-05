@@ -11,6 +11,7 @@ concurrency:
 
 permissions:
   contents: write
+  id-token: write # lets the job request an OIDC token for NuGet trusted publishing
 
 env:
   DOTNET_NOLOGO: true
@@ -40,10 +41,17 @@ jobs:
           name: nuget-package
           path: artifacts/*.nupkg
 
+      # Exchanges the workflow's OIDC token for a short-lived NuGet API key (no stored secret).
+      - name: NuGet login (trusted publishing)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }} # nuget.org profile name, not email
+
       - name: Push to NuGet
         run: >
           dotnet nuget push "artifacts/*.nupkg"
-          --api-key "${{ secrets.NUGET_API_KEY }}"
+          --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate
 
