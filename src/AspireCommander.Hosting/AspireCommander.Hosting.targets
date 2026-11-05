@@ -1,0 +1,9 @@
+<Project>
+    <!-- Copies the bundled Commander console app next to the consuming AppHost's output. -->
+    <ItemGroup>
+        <Content Include="$(MSBuildThisFileDirectory)commander\**"
+                 Link="commander\%(RecursiveDir)%(Filename)%(Extension)"
+                 CopyToOutputDirectory="PreserveNewest"
+                 Visible="false"/>
+    </ItemGroup>
+</Project>
