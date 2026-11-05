@@ -10,7 +10,7 @@
         <Description>Adds a Midnight Commander-inspired terminal file browser to any resource in a .NET Aspire AppHost.</Description>
         <PackageTags>aspire;hosting;terminal;tui;commander</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/aspire-community/AspireCommander</RepositoryUrl>
+        <RepositoryUrl>https://github.com/isaacrlevin/AspireCommander</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);CS1591</NoWarn>
