@@ -45,6 +45,7 @@ public static class CommanderResourceBuilderExtensions
         var commander = builder.ApplicationBuilder.AddResource(resource)
             .WithArgs("exec", executable)
             .WithEnvironment("ASPIRE_COMMANDER_TARGET", builder.Resource.Name)
+            .WithParentRelationship(target)
             .WaitFor(target);
 
         if (container is not null)
